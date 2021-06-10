@@ -15,7 +15,7 @@ import logger from 'redux-logger';
 const pizzaList = (state =[], action) => {
   switch (action.type) {
     case 'GET_PIZZA':
-      return state;
+      return action.payload;
     default: 
       return state;
   } // End switch
@@ -29,11 +29,18 @@ const customerList = (state =[], action) => {
       return state;
   } // End switch
 }
+//Total cost reducer
+  const handleTotal = (state = 0, action) => {
+    if(action.type === 'TOTAL') {
+    }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
+    return state;
+  }
 
 // ⬇ Store:
 const store = createStore(
     combineReducers({
-      pizzaList, customerList
+      pizzaList, customerList,
+      handleTotal
     }), applyMiddleware(logger)
 );
 

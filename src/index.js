@@ -21,11 +21,19 @@ const pizzaList = (state =[], action) => {
   } // End switch
 } // End pizzaList reducer
 
+const customerList = (state =[], action) => {
+  switch (action.type) {
+    case 'CUSTOMER_INFO':
+      return [...state, action.payload];
+    default: 
+      return state;
+  } // End switch
+}
 
 // ⬇ Store:
 const store = createStore(
     combineReducers({
-      pizzaList,
+      pizzaList, customerList
     }), applyMiddleware(logger)
 );
 

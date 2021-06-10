@@ -34,9 +34,6 @@ function App() {
           <Admin />
         </Route >
 
-        <img src='images/pizza_photo.png' />
-        <p>Pizza is great.</p>
-
       </div >
     </Router>
   );

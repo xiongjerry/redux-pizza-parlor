@@ -15,7 +15,7 @@ import logger from 'redux-logger';
 const pizzaList = (state =[], action) => {
   switch (action.type) {
     case 'GET_PIZZA':
-      return state;
+      return action.payload;
     default: 
       return state;
   } // End switch

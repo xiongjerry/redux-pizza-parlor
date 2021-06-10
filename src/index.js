@@ -21,11 +21,17 @@ const pizzaList = (state =[], action) => {
   } // End switch
 } // End pizzaList reducer
 
+//Total cost reducer
+  const handleTotal = (state = 0, action) => {
+    if(action.type === 'TOTAL') {
+    }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
+    return state;
+  }
 
 // ⬇ Store:
 const store = createStore(
     combineReducers({
-      pizzaList,
+      pizzaList, handleTotal
     }), applyMiddleware(logger)
 );
 

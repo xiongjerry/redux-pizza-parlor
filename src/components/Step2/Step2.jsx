@@ -44,6 +44,21 @@ function Step2() {
           value={zip}
           onChange={(event) => setZip(event.target.value)} />
 
+        <input type = "radio"
+          id =" pickup"
+          name = {delivery}
+          value = "pickup">
+            <label for ="pickup">Pickup</label>
+          </input>
+
+          <input type = "radio"
+          id =" delivery"
+          name = {delivery}
+          value = "delivery">
+            <label for ="delivery">Delivery</label>
+          </input>
+
+
         <button type = "submit" >
           Next
         </button>

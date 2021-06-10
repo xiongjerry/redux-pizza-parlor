@@ -4,6 +4,8 @@ import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 // ⬇ Server functionality: 
 import axios from 'axios';
+// ⬇ Other files: 
+import PizzaItem from '../PizzaItem/PizzaItem';
 //#endregion ⬆⬆ Document setup above. 
 
 function Step1() {

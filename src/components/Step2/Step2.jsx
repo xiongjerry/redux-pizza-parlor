@@ -47,16 +47,15 @@ function Step2() {
         <input type = "radio"
           id =" pickup"
           name = {delivery}
-          value = "pickup">
+          value = "pickup" />
             <label for ="pickup">Pickup</label>
-          </input>
 
           <input type = "radio"
           id =" delivery"
           name = {delivery}
-          value = "delivery">
+          value = "delivery" />
             <label for ="delivery">Delivery</label>
-          </input>
+          
 
 
         <button type = "submit" >

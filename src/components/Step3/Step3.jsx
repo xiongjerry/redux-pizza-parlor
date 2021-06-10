@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {useHistory} from 'react-router-dom'
 
 
@@ -8,13 +8,14 @@ function Step3() {
 
   const [total, setTotal]= useState(0);
   const pizzaList = useSelector(store => store.pizzaList);
+  const totalCost = useSelector(store => store.handleTotal)
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleTotal = () => {
-    setTotal(pizzaList.reduce((a, b) => a = a + b.cost, 0));
-    return total
-  }
+  useEffect(() =>{
+    dispatch({type: 'TOTAL'})
+    setTotal(totalCost)
+  }, [])
 
   const handleCheckout = event => {
     event.preventDefault();

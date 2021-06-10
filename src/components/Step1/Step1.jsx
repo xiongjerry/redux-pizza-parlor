@@ -1,20 +1,24 @@
 //#region ⬇⬇ Document setup below: 
 // ⬇ React/Redux functionality:
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // ⬇ Server functionality: 
 import axios from 'axios';
+// ⬇ Other files: 
+import PizzaItem from '../PizzaItem/PizzaItem';
 //#endregion ⬆⬆ Document setup above. 
 
 function Step1() {
   //#region ⬇⬇ State variables and page load below:
   // ⬇ State variables:
   const dispatch = useDispatch();
+  const pizzaList = useSelector(store => store.pizzaList);
   // ⬇ Getting pizzas on page load:
   useEffect(() => {
     getPizzas();
   }, []) // Empty array  means run only once at load!
   //#endregion ⬆⬆ State variables and page load above. 
+
 
   //#region ⬇⬇ CRUD functionality below:
   // ⬇ GET request to refresh data:
@@ -36,12 +40,21 @@ function Step1() {
   } // End getPizzas
   //#endregion ⬆⬆ CRUD functionality above. 
 
+
+  // ⬇ Rendering:
   return (
     <>
       <h2>Step 1: Select Your Pizza</h2>
-
+      <div>
+        {/* ⬇ Loops through and iterates each pizza from the DB to DOM: */}
+        {pizzaList.map(pizza => {
+          return (
+            <PizzaItem getPizzas={getPizzas} key={pizza.id} pizza={pizza} />
+          )
+        })}
+      </div>
     </>
-  )
+  ) // End return
 } // End Step1
 
 

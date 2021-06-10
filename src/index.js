@@ -21,6 +21,14 @@ const pizzaList = (state =[], action) => {
   } // End switch
 } // End pizzaList reducer
 
+const customerList = (state =[], action) => {
+  switch (action.type) {
+    case 'CUSTOMER_INFO':
+      return [...state, action.payload];
+    default: 
+      return state;
+  } // End switch
+}
 //Total cost reducer
   const handleTotal = (state = 0, action) => {
     if(action.type === 'TOTAL') {
@@ -31,7 +39,8 @@ const pizzaList = (state =[], action) => {
 // ⬇ Store:
 const store = createStore(
     combineReducers({
-      pizzaList, handleTotal
+      pizzaList, customerList,
+      handleTotal
     }), applyMiddleware(logger)
 );
 

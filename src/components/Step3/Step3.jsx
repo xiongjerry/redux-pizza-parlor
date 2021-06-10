@@ -27,7 +27,7 @@ function Step3() {
     .then(response => {
       
       history.push('/');
-      dispatchEvent({type: 'EMPTY_ORDER'})
+      dispatch({type: 'EMPTY_ORDER'})
     }).catch(err => {
       console.log(err)
     })

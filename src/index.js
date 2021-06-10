@@ -23,8 +23,8 @@ const pizzaList = (state =[], action) => {
 
 //Total cost reducer
   const handleTotal = (state = 0, action) => {
-    if(action.type === 'TOTAL')
-    state = (pizzaList.reduce((a, b) => a = a + b.cost, 0));
+    if(action.type === 'TOTAL') {
+    }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
     return state;
   }
 

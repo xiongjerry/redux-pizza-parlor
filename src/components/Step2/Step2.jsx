@@ -62,7 +62,7 @@ function Step2() {
           <label for="pickup">Pickup</label>
 
           <input type="radio"
-            id=""
+            id=" delivery"
             name="delivery"
             value={delivery}
             onChange={(event) => setDelivery(event.target.value)} />

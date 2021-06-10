@@ -10,31 +10,35 @@ import Admin from '../Admin/Admin';
 function App() {
 
   return (
-    <div className='App'>
 
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
+    <Router>
+      <div className='App'>
 
-      <Route path ='/' exact>
-        <Step1 />
-      </Route >
+        <header className='App-header'>
+          <h1 className='App-title'>Prime Pizza</h1>
+        </header>
 
-      <Route path='/step2'>
-        <Step2 />
-      </Route >
+        <Route path='/' exact>
+          <Step1 />
+        </Route >
 
-      <Route path='/step3'>
-        <Step3 />
-      </Route >
+        <Route path='/step2'>
+          <Step2 />
+        </Route >
 
-      <Route path='/admin'>
-        <Admin />
-      </Route >
+        <Route path='/step3'>
+          <Step3 />
+        </Route >
 
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
-    </div >
+        <Route path='/admin'>
+          <Admin />
+        </Route >
+
+        <img src='images/pizza_photo.png' />
+        <p>Pizza is great.</p>
+
+      </div >
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './PizzaItem.css';
 
 
 function PizzaItem({ pizza, getPizzas }) {
@@ -21,24 +22,25 @@ function PizzaItem({ pizza, getPizzas }) {
 
   return (
     <>
-      {/* <div onClick={handleAdd}>
-        {isAdded ? (
-          <div>
-            <img className="GalleryItem-image" src={image.url} />
-          </div>
-        ) : (
-          <div>
-            <div className="GalleryItem-description">
-              <h5>{image.title}</h5>
-              <br /> <br />
-              <p>{image.description}</p>
-            </div>
-          </div>
-        )}
-      </div> */}
-      <div>
-        <img src="/images/pizza_photo.png" />
-        <h1>Test test test</h1>
+      <div className="pizzaItem-wrapper">
+
+        <div className="pizzaItem-image">
+          <img src="/images/pizza_photo.png" height="100px" />
+        </div>
+
+        <div className="pizzaItem-description">
+          <h3>{pizza.name}</h3>
+          <p>{pizza.description}</p>
+        </div>
+
+        <div className="pizzaItem-button" onClick={handleAdd}>
+          {isAdded ? (
+            <button>Remove</button>
+          ) : (
+            <button>Add</button>
+          )}
+        </div>
+
       </div>
 
     </>

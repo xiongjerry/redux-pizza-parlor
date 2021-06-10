@@ -1,12 +1,15 @@
 import axios from "axios";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
+import {useHistory} from 'react-router-dom'
 
 
 function Step3() {
 
   const [total, setTotal]= useState(0);
   const pizzaList = useSelector(store => store.pizzaList);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleTotal = () => {
     setTotal(pizzaList.reduce((a, b) => a = a + b.cost, 0));
@@ -22,6 +25,8 @@ function Step3() {
     axios.post('/api/order')
     .then(response => {
       
+      history.push('/');
+      dispatchEvent({type: 'EMPTY_ORDER'})
     }).catch(err => {
       console.log(err)
     })

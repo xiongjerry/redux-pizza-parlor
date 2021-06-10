@@ -2,7 +2,7 @@ import {useSelector} from 'react-redux'
 
 function Admin () {
 
-    
+    // const orderList = useSelector(store. store. ADD REDUCER HERE)
 
     return (
         <>
@@ -17,7 +17,7 @@ function Admin () {
                     </tr>
                 </thead>
                 <tbody>
-                    {orderList.map((order, i) => {
+                    {/* {orderList.map((order, i) => {
                         return (
                         <tr key={i}>
                             <td>{order.name}</td>
@@ -25,7 +25,7 @@ function Admin () {
                             <td>{order.type}</td>
                             <td>{order.cost}</td>
                         </tr>)
-                        })}
+                        })} */}
                 </tbody>
             </table>
         </>

@@ -32,7 +32,7 @@ function Header() {
     </nav>
 
     <div className='cost-total'>
-      <h4>Total Cost: {totalCost(shoppingCart)}</h4>
+      <h4>Total Cost: ${totalCost(shoppingCart)}</h4>
     </div>
 
   </header>

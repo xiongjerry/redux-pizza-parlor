@@ -54,19 +54,12 @@ function Step2() {
             value={zip}
             onChange={(event) => setZip(event.target.value)} />
 
-          <input type="radio"
-            id=" pickup"
-            name="delivery"
-            value={delivery}
-            onChange={(event) => setDelivery(event.target.value)} />
-          <label htmlFor="pickup">Pickup</label>
+          <select name = "Delivery" onChange={(event) => setDelivery(event.target.value)}>
+              <option id="blank" >Select</option>
+              <option id="delivery" value = "delivery">Delivery</option>
+              <option id="pickup" value = "pickup">Pickup</option>
 
-          <input type="radio"
-            id=" delivery"
-            name="delivery"
-            value={delivery}
-            onChange={(event) => setDelivery(event.target.value)} />
-          <label htmlFor="delivery">Delivery</label>
+          </select>
 
 
 

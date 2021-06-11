@@ -25,7 +25,9 @@ const customerList = (state =[], action) => {
   switch (action.type) {
     case 'CUSTOMER_INFO':
       return [...state, action.payload];
-    default: 
+    case 'EMPTY_ORDER' :
+      return [];
+    default:
       return state;
   } // End switch
 }

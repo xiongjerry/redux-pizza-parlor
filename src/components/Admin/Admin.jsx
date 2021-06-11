@@ -1,12 +1,36 @@
-import {useSelector} from 'react-redux'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-function Admin () {
+function Admin() {
 
-    // const orderList = useSelector(store. store. ADD REDUCER HERE)
+    const [objectData, setObjectData] = useState({});
+    console.log('Object Data is:', objectData);
+
+    const getOrders = () => {
+        console.log('In getOrder');
+        // ⬇ Axios GET call to DB:
+        axios.get('/api/order')
+            .then(response => {
+                console.log('In GET /api/order:', response.data);
+                setObjectData({
+                    name: response.data.customer_name,
+                    time: response.data.time,
+                    type: response.data.type,
+                    total: response.data.total
+                })
+            }) // End .then
+            .catch(error => {
+                console.log('In GET /api/order:', error);
+            }); // End .catch
+    } // End getOrders
+
+    useEffect(() => {
+        getOrders();
+    }, [])
 
     return (
         <>
-        <h1>Prime Pizza Orders</h1>
+            <h1>Prime Pizza Orders</h1>
             <table>
                 <thead>
                     <tr>
@@ -17,15 +41,12 @@ function Admin () {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {orderList.map((order, i) => {
-                        return (
-                        <tr key={i}>
-                            <td>{order.name}</td>
-                            <td>{order.time}</td>
-                            <td>{order.type}</td>
-                            <td>{order.cost}</td>
-                        </tr>)
-                        })} */}
+                    <tr>
+                        <td>{objectData.name}</td>
+                        <td>{objectData.time}</td>
+                        <td>{objectData.type}</td>
+                        <td>{objectData.total}</td>
+                    </tr>
                 </tbody>
             </table>
         </>

@@ -28,11 +28,23 @@ const shoppingCart = (state = [], action) => {
     case 'ADD_TO_CART':
       return [...state, action.payload];
     case 'REMOVE_FROM_CART':
-      return state.filter(pizza => pizza.id !== action.payload.id);
+      return state.filter(pizza => pizza.id !== action.payload.id);  
     default:
       return state;
   } // End switch
 } // End shoppingCart reducer
+
+// ⬇ NON-FUNCTIONAL & NON-USED: Total cost reducer:
+const totalCost = (state = [], action) => {
+  switch (action.type) {
+    case 'SHOW_TOTAL':
+      const pizzaCost = (sum, pizza) => sum + Number(pizza.price);
+      const totalPrice = action.payload.reduce(pizzaCost, 0);
+      return totalPrice;    
+    default:
+      return state;
+  } // End switch
+} // End totalCost reducer
 
 // ⬇ Customer list reducer:
 const customerList = (state = [], action) => {
@@ -51,7 +63,7 @@ const customerList = (state = [], action) => {
 // ⬇ Store:
 const store = createStore(
   combineReducers({
-    pizzaList, customerList, shoppingCart
+    pizzaList, customerList, shoppingCart, totalCost
   }), applyMiddleware(logger)
 );
 

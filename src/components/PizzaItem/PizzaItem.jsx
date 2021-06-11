@@ -16,6 +16,7 @@ function PizzaItem({ pizza }) {
   */
   const addToCart = () => {
     console.log('In addToCart, pizza:', pizza.name);
+    pizza.quantity = 1;
     // ⬇ Sending pizza to shopping cart reducer:
     dispatch({
       type: 'ADD_TO_CART',

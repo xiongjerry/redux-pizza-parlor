@@ -1,16 +1,25 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function Header() {
 
   const shoppingCart = useSelector(store => store.shoppingCart);
+  const dispatch = useDispatch();
 
   const totalCost = (shoppingCart) => {
     const pizzaCost = (sum, pizza) => sum + Number(pizza.price);
     const totalPrice = shoppingCart.reduce(pizzaCost, 0);
     return totalPrice;
   } // End totalCost
+
+  // Non-functional code to try to figure out the total reducer:
+  // const showTotal = (shoppingCart) => {
+  //   dispatch({
+  //     type: 'SHOW_TOTAL',
+  //     payload: shoppingCart
+  //   })
+  // }
 
   return (
     <header className='App-header'>

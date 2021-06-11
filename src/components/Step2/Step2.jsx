@@ -14,7 +14,7 @@ function Step2() {
   const [zip, setZip] = useState('');
   const [delivery, setDelivery] = useState('');
 
-  const customerInfo = [name, address, city, zip, delivery]
+  const customerInfo = {name: name, address: address, city: city, zip: zip, delivery: delivery};
 
   const handleSubmit = () => {
 

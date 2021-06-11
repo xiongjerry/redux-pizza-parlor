@@ -25,8 +25,14 @@ const pizzaList = (state = [], action) => {
 // ⬇ Shopping cart reducer: 
 const shoppingCart = (state = [], action) => {
   switch (action.type) {
-    case 'SHOW_CART':
-      return action.payload;
+    case 'ADD_TO_CART':
+      return [...state, action.payload];
+    case 'REMOVE_FROM_CART':
+      return state.filter(pizza => pizza.id !== action.payload.id);
+    case 'SHOW_TOTAL':
+      let total = 0;
+      total += action.payload.price;
+      return total;
     default:
       return state;
   } // End switch
@@ -55,8 +61,7 @@ const handleTotal = (state = 0, action) => {
 // ⬇ Store:
 const store = createStore(
   combineReducers({
-    pizzaList, customerList,
-    handleTotal
+    pizzaList, customerList, handleTotal, shoppingCart
   }), applyMiddleware(logger)
 );
 

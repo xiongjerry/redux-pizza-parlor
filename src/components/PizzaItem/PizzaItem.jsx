@@ -1,22 +1,43 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './PizzaItem.css';
 
 
 function PizzaItem({ pizza, getPizzas }) {
 
   //#region ⬇⬇ All state variables below:
+  const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
   //#endregion ⬆⬆ All state variables above.
 
   //#region ⬇⬇ All event handlers below:
-  /** ⬇ handleAdd functionality:
-  * When the user clicks on ADD, this will flip between showing the ADD and REMOVE. 
+  /** ⬇ addToCart functionality:
+  * When the user clicks on ADD, this will send the pizza ato the cart reducer. 
   */
-  const handleAdd = () => {
-    console.log('In handleAdd, pizza:', pizza.name);
-    // ⬇ Flipping state variable value on click:
+  const addToCart = () => {
+    console.log('In addToCart, pizza:', pizza.name);
+    // ⬇ Sending pizza to shopping cart reducer:
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: pizza
+    }) // End dispatch
+    // ⬇ Flipping to show ADD or REMOVE on click:
     setIsAdded(!isAdded);
-  }
+  } // End addToCart
+
+  /** ⬇ removeFromCart functionality:
+  * When the user clicks on REMOVE, this will remove the pizza ato the cart reducer. 
+  */
+  const removeFromCart = () => {
+    console.log('In removeFromCart, pizza:', pizza.name);
+    // ⬇ Removing pizza to shopping cart reducer:
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      payload: pizza
+    }) // End dispatch
+    // ⬇ Flipping to show ADD or REMOVE on click:
+    setIsAdded(!isAdded);
+  } // End removeFromCart
   //#endregion ⬆⬆ All event handlers above.
 
 
@@ -34,11 +55,11 @@ function PizzaItem({ pizza, getPizzas }) {
           <p>${pizza.price}</p>
         </div>
 
-        <div className="pizzaItem-button" onClick={handleAdd}>
+        <div className="pizzaItem-button">
           {isAdded ? (
-            <button>Remove</button>
+            <button onClick={removeFromCart}>Remove</button>
           ) : (
-            <button>Add</button>
+            <button onClick={addToCart}>Add</button>
           )}
         </div>
 
@@ -46,7 +67,6 @@ function PizzaItem({ pizza, getPizzas }) {
 
     </>
   )
-
 } // End PizzaItem
 
 

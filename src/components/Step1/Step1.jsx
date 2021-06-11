@@ -45,7 +45,6 @@ function Step1() {
   const handleNext = () => {
     history.push("/step2");
   } // End handleNext
-
   //#endregion ⬆⬆ CRUD functionality above. 
 
 
@@ -63,7 +62,7 @@ function Step1() {
         })}
       </div>
 
-      <div className="next-button">
+      <div className="next-wrapper">
         <button onClick={handleNext}>Next</button>
       </div>
 

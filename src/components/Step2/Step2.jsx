@@ -22,7 +22,7 @@ function Step2() {
       type: 'CUSTOMER_INFO',
       payload: customerInfo
     });
-    // history.push(/step3)
+    history.push('/step3')
 
   }
 
@@ -35,7 +35,7 @@ function Step2() {
             placeholder="Name"
             value={name}
             onChange={(event) => setName(event.target.value)} />
-
+          
           <input
             required
             placeholder="Address"

@@ -6,48 +6,64 @@ import App from './components/App/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux'; 
+import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 //#endregion ⬆⬆ Document setup above. 
 
 
-// ⬇ Reducers: 
-const pizzaList = (state =[], action) => {
+//#region ⬇⬇ All reducers below: 
+// ⬇ Pizza list reducer: 
+const pizzaList = (state = [], action) => {
   switch (action.type) {
     case 'GET_PIZZA':
       return action.payload;
-    default: 
+    default:
       return state;
   } // End switch
 } // End pizzaList reducer
 
-const customerList = (state =[], action) => {
+// ⬇ Shopping cart reducer: 
+const shoppingCart = (state = [], action) => {
+  switch (action.type) {
+    case 'SHOW_CART':
+      return action.payload;
+    default:
+      return state;
+  } // End switch
+} // End shoppingCart reducer
+
+// ⬇ Customer list reducer:
+const customerList = (state = [], action) => {
   switch (action.type) {
     case 'CUSTOMER_INFO':
       return [...state, action.payload];
-    default: 
+    default:
       return state;
   } // End switch
 }
-//Total cost reducer
-  const handleTotal = (state = 0, action) => {
-    if(action.type === 'TOTAL') {
-    }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
-    return state;
-  }
+
+// ⬇ Total cost reducer:
+const handleTotal = (state = 0, action) => {
+  if (action.type === 'TOTAL') {
+
+  }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
+  return state;
+}
+//#endregion ⬆⬆ All reducers above. 
+
 
 // ⬇ Store:
 const store = createStore(
-    combineReducers({
-      pizzaList, customerList,
-      handleTotal
-    }), applyMiddleware(logger)
+  combineReducers({
+    pizzaList, customerList,
+    handleTotal
+  }), applyMiddleware(logger)
 );
 
 
 // ⬇ Render: 
 ReactDOM.render(
-  <Provider store = {store}> 
-    <App /> 
+  <Provider store={store}>
+    <App />
   </Provider>
   , document.getElementById('root'));

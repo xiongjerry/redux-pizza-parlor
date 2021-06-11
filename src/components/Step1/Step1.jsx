@@ -2,6 +2,7 @@
 // ⬇ React/Redux functionality:
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 // ⬇ Server functionality: 
 import axios from 'axios';
 // ⬇ Other files: 
@@ -12,6 +13,7 @@ function Step1() {
   //#region ⬇⬇ State variables and page load below:
   // ⬇ State variables:
   const dispatch = useDispatch();
+  const history = useHistory();
   const pizzaList = useSelector(store => store.pizzaList);
   // ⬇ Getting pizzas on page load:
   useEffect(() => {
@@ -38,6 +40,12 @@ function Step1() {
         console.log('In GET /api/pizza:', error);
       }); // End .catch
   } // End getPizzas
+
+  // ⬇ Button to go to next page:
+  const handleNext = () => {
+    history.push("/step2");
+  } // End handleNext
+
   //#endregion ⬆⬆ CRUD functionality above. 
 
 
@@ -45,6 +53,7 @@ function Step1() {
   return (
     <>
       <h2>Step 1: Select Your Pizza</h2>
+
       <div>
         {/* ⬇ Loops through and iterates each pizza from the DB to DOM: */}
         {pizzaList.map(pizza => {
@@ -53,6 +62,11 @@ function Step1() {
           )
         })}
       </div>
+
+      <div className="next-button">
+        <button onClick={handleNext}>Next</button>
+      </div>
+
     </>
   ) // End return
 } // End Step1

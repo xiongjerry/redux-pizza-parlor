@@ -31,6 +31,7 @@ function PizzaItem({ pizza, getPizzas }) {
         <div className="pizzaItem-description">
           <h3>{pizza.name}</h3>
           <p>{pizza.description}</p>
+          <p>${pizza.price}</p>
         </div>
 
         <div className="pizzaItem-button" onClick={handleAdd}>

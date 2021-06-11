@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import './PizzaItem.css';
 
 
-function PizzaItem({ pizza, getPizzas }) {
-
+function PizzaItem({ pizza }) {
   //#region ⬇⬇ All state variables below:
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
   //#endregion ⬆⬆ All state variables above.
 
+
   //#region ⬇⬇ All event handlers below:
-  /** ⬇ addToCart functionality:
+  /** ⬇ addToCart:
   * When the user clicks on ADD, this will send the pizza ato the cart reducer. 
   */
   const addToCart = () => {
@@ -25,7 +25,7 @@ function PizzaItem({ pizza, getPizzas }) {
     setIsAdded(!isAdded);
   } // End addToCart
 
-  /** ⬇ removeFromCart functionality:
+  /** ⬇ removeFromCart:
   * When the user clicks on REMOVE, this will remove the pizza ato the cart reducer. 
   */
   const removeFromCart = () => {
@@ -64,7 +64,6 @@ function PizzaItem({ pizza, getPizzas }) {
         </div>
 
       </div>
-
     </>
   )
 } // End PizzaItem

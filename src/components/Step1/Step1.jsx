@@ -57,7 +57,7 @@ function Step1() {
         {/* ⬇ Loops through and iterates each pizza from the DB to DOM: */}
         {pizzaList.map(pizza => {
           return (
-            <PizzaItem getPizzas={getPizzas} key={pizza.id} pizza={pizza} />
+            <PizzaItem key={pizza.id} pizza={pizza} />
           )
         })}
       </div>

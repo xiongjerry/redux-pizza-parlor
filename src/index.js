@@ -29,10 +29,6 @@ const shoppingCart = (state = [], action) => {
       return [...state, action.payload];
     case 'REMOVE_FROM_CART':
       return state.filter(pizza => pizza.id !== action.payload.id);
-    case 'SHOW_TOTAL':
-      let total = 0;
-      total += action.payload.price;
-      return total;
     default:
       return state;
   } // End switch
@@ -47,21 +43,13 @@ const customerList = (state = [], action) => {
       return state;
   } // End switch
 }
-
-// ⬇ Total cost reducer:
-const handleTotal = (state = 0, action) => {
-  if (action.type === 'TOTAL') {
-
-  }// state = {pizzaList.reduce((a, b) => a = a + b.cost, 0)};
-  return state;
-}
 //#endregion ⬆⬆ All reducers above. 
 
 
 // ⬇ Store:
 const store = createStore(
   combineReducers({
-    pizzaList, customerList, handleTotal, shoppingCart
+    pizzaList, customerList, shoppingCart
   }), applyMiddleware(logger)
 );
 

@@ -65,7 +65,7 @@ function Step2() {
 
           <button type="submit" >
             Next
-        </button>
+          </button>
 
         </form>
 

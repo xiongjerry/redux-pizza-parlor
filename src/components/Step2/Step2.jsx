@@ -22,7 +22,7 @@ function Step2() {
       type: 'CUSTOMER_INFO',
       payload: customerInfo
     });
-    // history.push(/step3)
+    history.push('/step3')
 
   }
 
@@ -35,7 +35,7 @@ function Step2() {
             placeholder="Name"
             value={name}
             onChange={(event) => setName(event.target.value)} />
-
+          
           <input
             required
             placeholder="Address"
@@ -54,25 +54,18 @@ function Step2() {
             value={zip}
             onChange={(event) => setZip(event.target.value)} />
 
-          <input type="radio"
-            id=" pickup"
-            name="delivery"
-            value={delivery}
-            onChange={(event) => setDelivery(event.target.value)} />
-          <label htmlFor="pickup">Pickup</label>
+          <select name = "Delivery" onChange={(event) => setDelivery(event.target.value)}>
+              <option id="blank" >Select</option>
+              <option id="delivery" value = "delivery">Delivery</option>
+              <option id="pickup" value = "pickup">Pickup</option>
 
-          <input type="radio"
-            id=" delivery"
-            name="delivery"
-            value={delivery}
-            onChange={(event) => setDelivery(event.target.value)} />
-          <label htmlFor="delivery">Delivery</label>
+          </select>
 
 
 
           <button type="submit" >
             Next
-        </button>
+          </button>
 
         </form>
 
